@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include "Entity.h"
+#include "PlayerState.h"
 
 class Player : public Entity
 {
@@ -16,7 +17,12 @@ public:
 
     void draw(SDL_Renderer* t_renderer) override;
 
+    PlayerState* getPlayerState() { return m_state; }
+    void setPlayerState(PlayerState* t_state) { m_state = t_state; }
+
 private:
+
+    PlayerState* m_state{ nullptr };
 };
 
 #endif

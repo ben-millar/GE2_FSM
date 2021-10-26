@@ -8,7 +8,8 @@ enum class InputID
 	DOWN,
 	LEFT,
 	RIGHT,
-	JUMP
+	JUMP,
+	EXIT
 };
 
 enum class InputType

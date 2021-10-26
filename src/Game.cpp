@@ -28,15 +28,15 @@ void Game::processEvents()
 {
     SDL_Event sdl_event;
     SDL_PollEvent(&sdl_event);
-
-    if (SDL_QUIT == sdl_event.type)
-        m_isRunning = false;
-    else
-        m_keyboard.handleInput(sdl_event);
+    m_keyboard.handleInput(sdl_event);
 
     InputEvent e;
     m_inputHandler.poll(e);
-    m_player->handleInput(e);
+
+    if (InputID::EXIT == e.ID)
+        m_isRunning = false;
+    else if (InputID::NONE != e.ID)
+        m_player->handleInput(e);
 }
 
 ////////////////////////////////////////////////////////////
