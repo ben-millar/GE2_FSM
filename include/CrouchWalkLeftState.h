@@ -6,6 +6,7 @@
 class CrouchWalkLeftState :
 	public OnGroundState
 {
+public:
 	CrouchWalkLeftState() = default;
 	virtual ~CrouchWalkLeftState() = default;
 	virtual PlayerState* handleInput(InputEvent t_event) override;
@@ -13,5 +14,8 @@ class CrouchWalkLeftState :
 	virtual void enter(Player&) override;
 	virtual void exit(Player&) override;
 };
+
+#include "CrouchingState.h"
+#include "WalkLeftState.h"
 
 #endif

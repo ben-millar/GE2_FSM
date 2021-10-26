@@ -6,6 +6,7 @@
 class RunLeftState :
     public OnGroundState
 {
+public:
 	RunLeftState() = default;
 	virtual ~RunLeftState() = default;
 	virtual PlayerState* handleInput(InputEvent t_event) override;

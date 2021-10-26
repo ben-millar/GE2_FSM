@@ -6,6 +6,7 @@
 class FallingState :
 	public PlayerState
 {
+public:
 	FallingState() = default;
 	virtual ~FallingState() = default;
 	virtual PlayerState* handleInput(InputEvent t_event) override;

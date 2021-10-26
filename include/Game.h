@@ -8,6 +8,7 @@
 
 #include "Player.h"
 #include "MacroCommand.h"
+#include "IdleState.h"
 
 class Game
 {

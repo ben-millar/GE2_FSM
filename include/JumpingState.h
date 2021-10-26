@@ -6,6 +6,7 @@
 class JumpingState :
     public PlayerState
 {
+public:
 	JumpingState() = default;
 	virtual ~JumpingState() = default;
 	virtual PlayerState* handleInput(InputEvent t_event) override;

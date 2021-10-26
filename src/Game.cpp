@@ -8,6 +8,7 @@ void Game::run()
     m_keyboard.addHandler(&m_inputHandler);
 
     m_player = new Player();
+    m_player->setPlayerState(new IdleState());
 
     if (!(m_window && m_renderer)) {
         printf("Something went wrong while creating the SDL window and renderer: %s\n", SDL_GetError());

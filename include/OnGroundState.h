@@ -6,6 +6,7 @@
 class OnGroundState :
     public PlayerState
 {
+public:
 	OnGroundState() = default;
 	virtual ~OnGroundState() = default;
 	virtual PlayerState* handleInput(InputEvent t_event) override;
@@ -13,5 +14,7 @@ class OnGroundState :
 	virtual void enter(Player&) override;
 	virtual void exit(Player&) override;
 };
+
+#include "JumpingState.h"
 
 #endif

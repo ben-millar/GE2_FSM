@@ -1,5 +1,5 @@
 #include "../include/Player.h"
-#include <iostream>
+
 void Player::handleInput(InputEvent t_event)
 {
 	PlayerState* state = m_state->handleInput(t_event);

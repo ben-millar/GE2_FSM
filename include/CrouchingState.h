@@ -1,5 +1,8 @@
-#pragma once
+#ifndef CROUCHING_STATE_H
+#define CROUCHING_STATE_H
+
 #include "OnGroundState.h"
+
 class CrouchingState :
     public OnGroundState
 {
@@ -11,3 +14,9 @@ public:
 	virtual void enter(Player&) override;
 	virtual void exit(Player&) override;
 };
+
+#include "IdleState.h"
+#include "CrouchWalkLeftState.h"
+#include "CrouchWalkRightState.h"
+
+#endif
