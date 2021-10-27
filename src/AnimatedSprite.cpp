@@ -1,5 +1,5 @@
 #include "AnimatedSprite.h"
-#include <iostream>
+
 AnimatedSprite::AnimatedSprite(SDL_Rect t_rect) :
 	m_sprite(t_rect)
 {

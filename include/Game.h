@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "MacroCommand.h"
 #include "IdleState.h"
+#include "TextureManager.h"
 
 class Game
 {
