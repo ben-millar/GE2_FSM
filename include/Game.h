@@ -27,6 +27,7 @@ public:
     ~Game() = default;
 
     void run();
+    SDL_Texture* loadTextures(std::string t_path);
     void processEvents();
     void update();
     void render();

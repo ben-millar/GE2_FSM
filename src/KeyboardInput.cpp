@@ -19,7 +19,6 @@ void KeyboardInput::initialiseMap()
 	m_mapping.emplace(SDLK_d, InputID::RIGHT);
 	m_mapping.emplace(SDLK_SPACE, InputID::JUMP);
 	m_mapping.emplace(SDLK_ESCAPE, InputID::EXIT);
-	m_mapping.emplace(SDL_QUIT, InputID::EXIT);
 }
 
 ///////////////////////////////////////////////////////////////
