@@ -6,6 +6,9 @@ PlayerState* JumpingState::handleInput(InputEvent t_event)
     {
         switch (t_event.ID)
         {
+        case InputID::JUMP:
+            return new FallingState();
+            break;
         default:
             break;
         }
@@ -24,18 +27,30 @@ PlayerState* JumpingState::handleInput(InputEvent t_event)
 
 ///////////////////////////////////////////////////////////////
 
-void JumpingState::update(Player&)
+void JumpingState::update(Player& p)
 {
 }
 
 ///////////////////////////////////////////////////////////////
 
-void JumpingState::enter(Player&)
+void JumpingState::enter(Player& p)
 {
+    AnimatedSprite& spr = p.getAnimatedSprite();
+    spr.setTexture(TextureManager::getInstance()->get("JUMP"));
+    spr.setFrames(
+        {
+            SDL_Rect{0,0,32,32},
+            SDL_Rect{0,32,32,32},
+            SDL_Rect{0,64,32,32},
+            SDL_Rect{0,96,32,32},
+            SDL_Rect{0,128,32,32},
+            SDL_Rect{0,160,32,32}
+        }
+    );
 }
 
 ///////////////////////////////////////////////////////////////
 
-void JumpingState::exit(Player&)
+void JumpingState::exit(Player& p)
 {
 }

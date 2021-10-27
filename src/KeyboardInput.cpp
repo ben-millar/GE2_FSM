@@ -25,8 +25,9 @@ void KeyboardInput::initialiseMap()
 
 void KeyboardInput::handleInput(SDL_Event t_event)
 {
-	if (SDL_KEYDOWN == t_event.type ||
-		SDL_KEYUP == t_event.type)
+	if (t_event.key.repeat == m_keyRepeatEnabled &&
+		(SDL_KEYDOWN == t_event.type ||
+		 SDL_KEYUP == t_event.type))
 	{
 		auto it = m_mapping.find(t_event.key.keysym.sym);
 

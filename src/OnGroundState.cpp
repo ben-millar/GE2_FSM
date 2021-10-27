@@ -7,7 +7,7 @@ PlayerState* OnGroundState::handleInput(InputEvent t_event)
         switch (t_event.ID)
         {
         case InputID::JUMP:
-            std::cout << "JUMP PRESSED" << std::endl;
+            return new JumpingState();
             break;
         default:
             break;

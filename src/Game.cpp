@@ -11,11 +11,16 @@ void Game::run()
         exit(1);
     }
 
-    m_keyboard.addHandler(&m_inputHandler);
+    p_inputHandler = InputHandler::getInstance();
+    m_keyboard.addHandler(p_inputHandler);
 
     TextureManager* tm = TextureManager::getInstance();
     tm->add("IDLE", loadTextures("assets/ChikBoy_idle.png"));
     tm->add("WALK", loadTextures("assets/ChikBoy_run.png"));
+    tm->add("JUMP", loadTextures("assets/ChikBoy_jump.png"));
+    tm->add("FALL", loadTextures("assets/ChikBoy_fall.png"));
+    tm->add("CROUCH", loadTextures("assets/ChikBoy_crouch_idle.png"));
+    tm->add("CROUCH_WALK", loadTextures("assets/ChikBoy_crouch_walk.png"));
 
     m_player = new Player();
     m_player->setPlayerState(new IdleState());
@@ -66,7 +71,7 @@ void Game::processEvents()
     m_keyboard.handleInput(sdl_event);
 
     InputEvent e;
-    m_inputHandler.poll(e);
+    p_inputHandler->poll(e);
 
     if (InputID::EXIT == e.ID) 
         m_isRunning = false;

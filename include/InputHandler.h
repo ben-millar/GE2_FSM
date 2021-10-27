@@ -8,6 +8,15 @@
 class InputHandler
 {
 public:
+	static InputHandler* getInstance()
+	{
+		static InputHandler instance;
+		return &instance;
+	}
+
+	InputHandler(InputHandler const&) = delete;
+	void operator=(InputHandler const&) = delete;
+
 	/// <summary>
 	/// @brief Upon recieving a new event, add it to our queue
 	/// </summary>
@@ -28,7 +37,7 @@ public:
 	static bool isPressed(InputID t_ID);
 
 private:
-
+	InputHandler() {}
 	static std::queue<InputEvent> m_inputQueue;
 	static std::set<InputID> m_activeInputs;
 };

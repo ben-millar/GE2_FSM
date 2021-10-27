@@ -34,18 +34,28 @@ PlayerState* CrouchingState::handleInput(InputEvent t_event)
 
 ///////////////////////////////////////////////////////////////
 
-void CrouchingState::update(Player&)
+void CrouchingState::update(Player& p)
 {
 }
 
 ///////////////////////////////////////////////////////////////
 
-void CrouchingState::enter(Player&)
+void CrouchingState::enter(Player& p)
 {
+    AnimatedSprite& spr = p.getAnimatedSprite();
+    spr.setTexture(TextureManager::getInstance()->get("CROUCH"));
+    spr.setFrames(
+        {
+            SDL_Rect{0,0,32,32},
+            SDL_Rect{0,32,32,32},
+            SDL_Rect{0,64,32,32},
+            SDL_Rect{0,96,32,32}
+        }
+    );
 }
 
 ///////////////////////////////////////////////////////////////
 
-void CrouchingState::exit(Player&)
+void CrouchingState::exit(Player& p)
 {
 }

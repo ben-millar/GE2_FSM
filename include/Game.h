@@ -17,7 +17,7 @@ private:
     SDL_Window* m_window{nullptr};
     SDL_Renderer* m_renderer{nullptr};
 
-    InputHandler m_inputHandler;
+    InputHandler* p_inputHandler;
     KeyboardInput m_keyboard;
 
     Player* m_player;

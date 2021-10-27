@@ -25,25 +25,18 @@ struct InputEvent
 	InputType type;
 
 	/// <summary>
-	/// Default c'tor
+	/// @brief Overloaded c'tor
 	/// </summary>
-	InputEvent() :
-		ID{InputID::NONE},
-		type(InputType::NONE) {}
+	/// <param name="t_type">Type of event</param>
+	InputEvent(InputID t_ID = InputID::NONE, InputType t_type = InputType::NONE) :
+		ID{ t_ID },
+		type{ t_type }
+	{};
 
 	/// <summary>
 	/// Default d'tor
 	/// </summary>
 	~InputEvent() = default;
-
-	/// <summary>
-	/// @brief Overloaded c'tor
-	/// </summary>
-	/// <param name="t_type">Type of event</param>
-	InputEvent(InputID t_ID, InputType t_type) :
-		ID{ t_ID },
-		type{ t_type }
-	{};
 };
 
 #endif // !INPUT_EVENT_H

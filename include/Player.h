@@ -4,8 +4,10 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "Entity.h"
+#include "InputHandler.h"
 #include "PlayerState.h"
 #include "AnimatedSprite.h"
+#include "PhysicsBody.h"
 
 class Player : public Entity
 {
@@ -23,8 +25,9 @@ public:
     void setPlayerState(PlayerState* t_state);
 
 private:
+    InputHandler* p_inputHandler;
     PlayerState* m_state{ nullptr };
-
+    PhysicsBody m_physicsBody;
     AnimatedSprite m_animatedSprite;
 };
 

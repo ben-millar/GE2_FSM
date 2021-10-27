@@ -3,6 +3,8 @@
 Player::Player() :
 	m_animatedSprite(SDL_Rect{400,400,128,128})
 {
+	p_inputHandler = InputHandler::getInstance();
+	m_animatedSprite.setPosition(m_physicsBody.getPosition());
 }
 
 ///////////////////////////////////////////////////////////////
@@ -20,7 +22,14 @@ void Player::handleInput(InputEvent t_event)
 void Player::update()
 {
 	m_state->update(*this);
+	m_physicsBody.update();
 	m_animatedSprite.update();
+	m_animatedSprite.setPosition(m_physicsBody.getPosition());
+
+	if (p_inputHandler->isPressed(InputID::LEFT))
+		m_physicsBody.moveLeft();
+	else if (p_inputHandler->isPressed(InputID::RIGHT))
+		m_physicsBody.moveRight();
 }
 
 ///////////////////////////////////////////////////////////////

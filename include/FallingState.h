@@ -15,4 +15,6 @@ public:
 	virtual void exit(Player&) override;
 };
 
+#include "IdleState.h"
+
 #endif

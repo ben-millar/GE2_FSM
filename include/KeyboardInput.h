@@ -27,6 +27,8 @@ private:
 	// A mapping of SDL input to our generic input struct
 	std::unordered_map<SDL_Keycode, InputID> m_mapping;
 
+	bool m_keyRepeatEnabled{ false };
+
 };
 
 #endif // !KEYBOARD_INPUT_H
