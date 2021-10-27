@@ -1,5 +1,10 @@
 CXX			:= g++
 
+SDL_CFLAGS := $(shell sdl2-config --cflags)
+SDL_LDFLAGS := $(shell sdl2-config --libs) -lSDL2_image -lSDL2_ttf
+
+CXXFLAGS 	:= -I. -I./include ${SDL_CFLAGS} ${SDL_LDFLAGS}
+
 EXE_NAME	:= Lab0
 
 MSG_START	:= "Build Started"
@@ -24,7 +29,7 @@ build:
 	#create bin directory
 	mkdir ${BUILD_DIR}
 
-	${CXX} -o ${EXE_NAME} ${SRC} -I${SDL_INCLUDE} -L${SDL_LIB} -lmingw32 -lSDL2main -lSDL2_image -lSDL2
+	${CXX} -o ${EXE_NAME} ${SRC} ${CXXFLAGS}
 	@echo ${MSG_END}
 	./${EXE_NAME}
 
