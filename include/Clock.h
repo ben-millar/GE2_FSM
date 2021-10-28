@@ -9,6 +9,22 @@ public:
 	Time(Uint32 t_val) : val{ t_val } {}
 	float asSeconds() { return val / 1000.0f; }
 	float asMilliseconds() { return static_cast<float>(val); }
+
+	Time& operator+=(const Time& rhs)
+	{
+		this->val += rhs.val;
+		return *this;
+	}
+
+	Time& operator-=(const Time& rhs)
+	{
+		this->val -= rhs.val;
+		return *this;
+	}
+
+	bool operator>(const Time& t) { return this->val > t.val; }
+	bool operator<(const Time& t) { return this->val < t.val; }
+
 private:
 	Uint32 val;
 };

@@ -1,19 +1,19 @@
-#include "../include/IdleState.h"
+#include "../include/CrouchingLeftState.h"
 
-PlayerState* IdleState::handleInput(InputEvent t_event)
+PlayerState* CrouchingLeftState::handleInput(InputEvent t_event)
 {
     if (InputType::PRESSED == t_event.type)
     {
         switch (t_event.ID)
         {
         case InputID::LEFT:
-            return new WalkLeftState();
+            return new CrouchWalkLeftState();
             break;
         case InputID::RIGHT:
-            return new WalkRightState();
+            return new CrouchWalkRightState();
             break;
-        case InputID::DOWN:
-            return new CrouchingState();
+        case InputID::JUMP:
+            return new JumpingLeftState();
             break;
         default:
             break;
@@ -23,41 +23,41 @@ PlayerState* IdleState::handleInput(InputEvent t_event)
     {
         switch (t_event.ID)
         {
+        case InputID::DOWN:
+            return new IdleLeftState();
+            break;
         default:
             break;
         }
     }
 
-    // If we didn't handle this event, pass up to our superstate
-    return OnGroundState::handleInput(t_event);
+    return nullptr;
 }
 
 ///////////////////////////////////////////////////////////////
 
-void IdleState::update(Player& p)
+void CrouchingLeftState::update(Player& p)
 {
 }
 
 ///////////////////////////////////////////////////////////////
 
-void IdleState::enter(Player& p)
+void CrouchingLeftState::enter(Player& p)
 {
     AnimatedSprite& spr = p.getAnimatedSprite();
-    spr.setTexture(TextureManager::getInstance()->get("IDLE"));
+    spr.setTexture(TextureManager::getInstance()->get("CROUCH"));
     spr.setFrames(
         {
             SDL_Rect{0,0,32,32},
             SDL_Rect{0,32,32,32},
             SDL_Rect{0,64,32,32},
-            SDL_Rect{0,96,32,32},
-            SDL_Rect{0,128,32,32},
-            SDL_Rect{0,160,32,32}
+            SDL_Rect{0,96,32,32}
         }
     );
 }
 
 ///////////////////////////////////////////////////////////////
 
-void IdleState::exit(Player& p)
+void CrouchingLeftState::exit(Player& p)
 {
 }

@@ -19,17 +19,17 @@ void Player::handleInput(InputEvent t_event)
 
 ///////////////////////////////////////////////////////////////
 
-void Player::update()
+void Player::update(Time t_dT)
 {
 	m_state->update(*this);
-	m_physicsBody.update();
+	m_physicsBody.update(t_dT);
 	m_animatedSprite.update();
 	m_animatedSprite.setPosition(m_physicsBody.getPosition());
 
 	if (p_inputHandler->isPressed(InputID::LEFT))
-		m_physicsBody.moveLeft();
+		m_physicsBody.moveLeft(t_dT);
 	else if (p_inputHandler->isPressed(InputID::RIGHT))
-		m_physicsBody.moveRight();
+		m_physicsBody.moveRight(t_dT);
 }
 
 ///////////////////////////////////////////////////////////////

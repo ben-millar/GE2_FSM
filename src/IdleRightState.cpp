@@ -1,11 +1,23 @@
-#include "../include/CrouchWalkRightState.h"
+#include "../include/IdleRightState.h"
 
-PlayerState* CrouchWalkRightState::handleInput(InputEvent t_event)
+PlayerState* IdleRightState::handleInput(InputEvent t_event)
 {
     if (InputType::PRESSED == t_event.type)
     {
         switch (t_event.ID)
         {
+        case InputID::LEFT:
+            return new WalkLeftState();
+            break;
+        case InputID::RIGHT:
+            return new WalkRightState();
+            break;
+        case InputID::DOWN:
+            return new CrouchingRightState();
+            break;
+        case InputID::JUMP:
+            return new JumpingRightState();
+            break;
         default:
             break;
         }
@@ -14,15 +26,6 @@ PlayerState* CrouchWalkRightState::handleInput(InputEvent t_event)
     {
         switch (t_event.ID)
         {
-        case InputID::DOWN:
-            return new WalkRightState();
-            break;
-        case InputID::RIGHT:
-            return new CrouchingRightState();
-            break;
-        case InputID::JUMP:
-            return new JumpingRightState();
-            break;
         default:
             break;
         }
@@ -33,16 +36,16 @@ PlayerState* CrouchWalkRightState::handleInput(InputEvent t_event)
 
 ///////////////////////////////////////////////////////////////
 
-void CrouchWalkRightState::update(Player& p)
+void IdleRightState::update(Player& p)
 {
 }
 
 ///////////////////////////////////////////////////////////////
 
-void CrouchWalkRightState::enter(Player& p)
+void IdleRightState::enter(Player& p)
 {
     AnimatedSprite& spr = p.getAnimatedSprite();
-    spr.setTexture(TextureManager::getInstance()->get("CROUCH_WALK"));
+    spr.setTexture(TextureManager::getInstance()->get("IDLE"));
     spr.setFrames(
         {
             SDL_Rect{32,0,32,32},
@@ -50,17 +53,13 @@ void CrouchWalkRightState::enter(Player& p)
             SDL_Rect{32,64,32,32},
             SDL_Rect{32,96,32,32},
             SDL_Rect{32,128,32,32},
-            SDL_Rect{32,160,32,32},
-            SDL_Rect{32,192,32,32},
-            SDL_Rect{32,224,32,32},
-            SDL_Rect{32,256,32,32},
-            SDL_Rect{32,288,32,32}
+            SDL_Rect{32,160,32,32}
         }
     );
 }
 
 ///////////////////////////////////////////////////////////////
 
-void CrouchWalkRightState::exit(Player& p)
+void IdleRightState::exit(Player& p)
 {
 }

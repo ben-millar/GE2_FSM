@@ -1,14 +1,14 @@
-#ifndef IDLE_STATE_H
-#define IDLE_STATE_H
+#ifndef IDLE_LEFT_STATE_H
+#define IDLE_LEFT_STATE_H
 
-#include "OnGroundState.h"
+#include "PlayerState.h"
 
-class IdleState :
-    public OnGroundState
+class IdleLeftState :
+    public PlayerState
 {
 public:
-	IdleState() = default;
-	virtual ~IdleState() = default;
+	IdleLeftState() = default;
+	virtual ~IdleLeftState() = default;
 	virtual PlayerState* handleInput(InputEvent t_event) override;
 	virtual void update(Player&) override;
 	virtual void enter(Player&) override;
@@ -17,6 +17,7 @@ public:
 
 #include "WalkLeftState.h"
 #include "WalkRightState.h"
-#include "CrouchingState.h"
+#include "CrouchingLeftState.h"
+#include "JumpingLeftState.h"
 
 #endif

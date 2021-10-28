@@ -9,6 +9,9 @@ PlayerState* WalkRightState::handleInput(InputEvent t_event)
         case InputID::DOWN:
             return new CrouchWalkRightState();
             break;
+        case InputID::JUMP:
+            return new JumpingRightState();
+            break;
         default:
             break;
         }
@@ -18,15 +21,14 @@ PlayerState* WalkRightState::handleInput(InputEvent t_event)
         switch (t_event.ID)
         {
         case InputID::RIGHT:
-            return new IdleState();
+            return new IdleRightState();
             break;
         default:
             break;
         }
     }
 
-    // If we didn't handle this event, pass up to our superstate
-    return OnGroundState::handleInput(t_event);
+    return nullptr;
 }
 
 ///////////////////////////////////////////////////////////////
@@ -43,16 +45,16 @@ void WalkRightState::enter(Player& p)
     spr.setTexture(TextureManager::getInstance()->get("WALK"));
     spr.setFrames(
         {
-            SDL_Rect{0,0,32,32},
-            SDL_Rect{0,32,32,32},
-            SDL_Rect{0,64,32,32},
-            SDL_Rect{0,96,32,32},
-            SDL_Rect{0,128,32,32},
-            SDL_Rect{0,160,32,32},
-            SDL_Rect{0,192,32,32},
-            SDL_Rect{0,224,32,32},
-            SDL_Rect{0,256,32,32},
-            SDL_Rect{0,288,32,32}
+            SDL_Rect{32,0,32,32},
+            SDL_Rect{32,32,32,32},
+            SDL_Rect{32,64,32,32},
+            SDL_Rect{32,96,32,32},
+            SDL_Rect{32,128,32,32},
+            SDL_Rect{32,160,32,32},
+            SDL_Rect{32,192,32,32},
+            SDL_Rect{32,224,32,32},
+            SDL_Rect{32,256,32,32},
+            SDL_Rect{32,288,32,32}
         }
     );
 }

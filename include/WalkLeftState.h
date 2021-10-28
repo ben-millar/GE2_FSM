@@ -1,10 +1,10 @@
 #ifndef WALK_LEFT_STATE_H
 #define WALK_LEFT_STATE_H
 
-#include "OnGroundState.h"
+#include "PlayerState.h"
 
 class WalkLeftState :
-    public OnGroundState
+    public PlayerState
 {
 public:
 	WalkLeftState() = default;
@@ -15,7 +15,8 @@ public:
 	virtual void exit(Player&) override;
 };
 
-#include "IdleState.h"
+#include "IdleLeftState.h"
 #include "CrouchWalkLeftState.h"
+#include "JumpingLeftState.h"
 
 #endif

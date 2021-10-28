@@ -19,7 +19,7 @@ public:
 
     void handleInput(InputEvent t_event) override;
 
-    void update() override;
+    void update(Time t_dT) override;
 
     PlayerState* getPlayerState() { return m_state; }
     void setPlayerState(PlayerState* t_state);

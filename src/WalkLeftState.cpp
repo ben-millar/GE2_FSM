@@ -18,15 +18,17 @@ PlayerState* WalkLeftState::handleInput(InputEvent t_event)
         switch (t_event.ID)
         {
         case InputID::LEFT:
-            return new IdleState();
+            return new IdleLeftState();
+            break;
+        case InputID::JUMP:
+            return new JumpingLeftState();
             break;
         default:
             break;
         }
     }
 
-    // If we didn't handle this event, pass up to our superstate
-    return OnGroundState::handleInput(t_event);
+    return nullptr;
 }
 
 ///////////////////////////////////////////////////////////////

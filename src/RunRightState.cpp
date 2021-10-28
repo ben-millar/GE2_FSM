@@ -19,8 +19,7 @@ PlayerState* RunRightState::handleInput(InputEvent t_event)
         }
     }
 
-    // If we didn't handle this event, pass up to our superstate
-    return OnGroundState::handleInput(t_event);
+    return nullptr;
 }
 
 ///////////////////////////////////////////////////////////////

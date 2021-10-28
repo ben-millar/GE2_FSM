@@ -1,10 +1,10 @@
 #ifndef RUN_LEFT_STATE_H
 #define RUN_LEFT_STATE_H
 
-#include "OnGroundState.h"
+#include "PlayerState.h"
 
 class RunLeftState :
-    public OnGroundState
+    public PlayerState
 {
 public:
 	RunLeftState() = default;

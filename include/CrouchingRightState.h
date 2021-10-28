@@ -1,22 +1,23 @@
-#ifndef CROUCH_WALK_RIGHT_STATE_H
-#define CROUCH_WALK_RIGHT_STATE_H
+#ifndef CROUCHING_RIGHT_STATE_H
+#define CROUCHING_RIGHT_STATE_H
 
 #include "PlayerState.h"
 
-class CrouchWalkRightState :
+class CrouchingRightState :
     public PlayerState
 {
 public:
-	CrouchWalkRightState() = default;
-	virtual ~CrouchWalkRightState() = default;
+	CrouchingRightState() = default;
+	virtual ~CrouchingRightState() = default;
 	virtual PlayerState* handleInput(InputEvent t_event) override;
 	virtual void update(Player&) override;
 	virtual void enter(Player&) override;
 	virtual void exit(Player&) override;
 };
 
-#include "CrouchingRightState.h"
-#include "WalkRightState.h"
+#include "IdleRightState.h"
+#include "CrouchWalkRightState.h"
+#include "CrouchWalkLeftState.h"
 #include "JumpingRightState.h"
 
 #endif

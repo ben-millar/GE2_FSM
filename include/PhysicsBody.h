@@ -1,6 +1,8 @@
 #ifndef PHYSICS_BODY_H
 #define PHYSICS_BODY_H
 
+#include "Clock.h"
+
 class Vector2
 {
 public:
@@ -23,10 +25,10 @@ public:
 class PhysicsBody
 {
 public:
-	PhysicsBody(float t_maxSpeed = 5.0f, float t_timeToMaxSpeed = 1.0f, float t_timeToFullStop = 1.0f) :
+	PhysicsBody(float t_maxSpeed = 0.1f, float t_acceleration = 1.0f, float t_deceleration = 5.0f) :
 		MAX_SPEED(t_maxSpeed),
-		TIME_TO_MAX_SPEED(t_timeToMaxSpeed),
-		TIME_TO_FULL_STOP(t_timeToFullStop),
+		ACCELERATION(t_acceleration),
+		DECELERATION(t_deceleration),
 		m_position(Vector2(200.0f,200.0f)),
 		m_velocity(Vector2(0.0f,0.0f))
 	{}
@@ -35,20 +37,20 @@ public:
 	Vector2 getPosition() { return m_position; }
 	Vector2 getVelocity() { return m_velocity; }
 
-	void update();
+	void update(Time t_dT);
 
-	void moveLeft();
-	void moveRight();
+	void moveLeft(Time t_dT);
+	void moveRight(Time t_dT);
 
 private:
-	void decelerate();
+	void decelerate(Time t_dT);
 
 	Vector2 m_position;
 	Vector2 m_velocity;
 
-	const float TIME_TO_MAX_SPEED;
-	const float TIME_TO_FULL_STOP;
 	const float MAX_SPEED;
+	const float ACCELERATION;
+	const float DECELERATION;
 };
 
 #endif

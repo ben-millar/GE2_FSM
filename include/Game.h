@@ -8,7 +8,7 @@
 
 #include "Player.h"
 #include "MacroCommand.h"
-#include "IdleState.h"
+#include "IdleLeftState.h"
 #include "TextureManager.h"
 
 class Game
@@ -30,7 +30,7 @@ public:
     void run();
     SDL_Texture* loadTextures(std::string t_path);
     void processEvents();
-    void update();
+    void update(Time t_dT);
     void render();
     void cleanUp();
 

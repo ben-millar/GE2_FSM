@@ -23,12 +23,26 @@ void Game::run()
     tm->add("CROUCH_WALK", loadTextures("assets/ChikBoy_crouch_walk.png"));
 
     m_player = new Player();
-    m_player->setPlayerState(new IdleState());
+    m_player->setPlayerState(new IdleLeftState());
+
+    Clock clock;
+    Time lag(0U);
+    const Time MS_PER_UPDATE = 1000U / 60U;
+    clock.start();
 
     while (m_isRunning)
     {
+        Time dT = clock.restart();
+        lag += dT;
         processEvents();
-        update();
+
+        while (lag > MS_PER_UPDATE)
+        {
+            update(MS_PER_UPDATE);
+            lag -= MS_PER_UPDATE;
+        }
+
+        update(dT);
         render();
     }
 }
@@ -81,9 +95,9 @@ void Game::processEvents()
 
 ////////////////////////////////////////////////////////////
 
-void Game::update()
+void Game::update(Time t_dT)
 {
-    m_player->update();
+    m_player->update(t_dT);
 }
 
 ////////////////////////////////////////////////////////////

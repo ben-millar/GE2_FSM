@@ -1,20 +1,20 @@
-#ifndef JUMPING_STATE_H
-#define JUMPING_STATE_H
+#ifndef FALLING_RIGHT_STATE_H
+#define FALLING_RIGHT_STATE_H
 
 #include "PlayerState.h"
 
-class JumpingState :
-    public PlayerState
+class FallingRightState :
+	public PlayerState
 {
 public:
-	JumpingState() = default;
-	virtual ~JumpingState() = default;
+	FallingRightState() = default;
+	virtual ~FallingRightState() = default;
 	virtual PlayerState* handleInput(InputEvent t_event) override;
 	virtual void update(Player&) override;
 	virtual void enter(Player&) override;
 	virtual void exit(Player&) override;
 };
 
-#include "FallingState.h"
+#include "IdleRightState.h"
 
 #endif

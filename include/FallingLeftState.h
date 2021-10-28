@@ -1,18 +1,20 @@
-#ifndef RUN_RIGHT_STATE_H
-#define RUN_RIGHT_STATE_H
+#ifndef FALLING_LEFT_STATE_H
+#define FALLING_LEFT_STATE_H
 
 #include "PlayerState.h"
 
-class RunRightState :
-    public PlayerState
+class FallingLeftState :
+	public PlayerState
 {
 public:
-	RunRightState() = default;
-	virtual ~RunRightState() = default;
+	FallingLeftState() = default;
+	virtual ~FallingLeftState() = default;
 	virtual PlayerState* handleInput(InputEvent t_event) override;
 	virtual void update(Player&) override;
 	virtual void enter(Player&) override;
 	virtual void exit(Player&) override;
 };
+
+#include "IdleLeftState.h"
 
 #endif
