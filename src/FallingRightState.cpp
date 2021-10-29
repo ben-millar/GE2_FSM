@@ -6,8 +6,8 @@ PlayerState* FallingRightState::handleInput(InputEvent t_event)
     {
         switch (t_event.ID)
         {
-        case InputID::JUMP:
-            return new IdleRightState();
+        case InputID::LEFT:
+            return new FallingLeftState();
             break;
         default:
             break;
@@ -21,6 +21,17 @@ PlayerState* FallingRightState::handleInput(InputEvent t_event)
             break;
         }
     }
+    else
+    {
+        switch (t_event.ID)
+        {
+        case InputID::HIT_GROUND:
+            return new IdleRightState();
+            break;
+        default:
+            break;
+        }
+    }
 
     return nullptr;
 }
@@ -29,6 +40,8 @@ PlayerState* FallingRightState::handleInput(InputEvent t_event)
 
 void FallingRightState::update(Player& p)
 {
+    if (InputHandler::getInstance()->isPressed(InputID::RIGHT))
+        p.getPhysicsBody().moveRight(1.0f);
 }
 
 ///////////////////////////////////////////////////////////////
@@ -41,16 +54,16 @@ void FallingRightState::enter(Player& p)
         {
             SDL_Rect{32,0,32,32},
             SDL_Rect{32,32,32,32},
-            SDL_Rect{32,64,32,32},
-            SDL_Rect{32,96,32,32},
-            SDL_Rect{32,128,32,32},
-            SDL_Rect{32,160,32,32}
+            SDL_Rect{32,64,32,32}
         }
     );
+
+    spr.loop(false);
 }
 
 ///////////////////////////////////////////////////////////////
 
 void FallingRightState::exit(Player& p)
 {
+    p.getAnimatedSprite().loop(true);
 }

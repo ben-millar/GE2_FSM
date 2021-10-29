@@ -5,22 +5,21 @@ SDL_LDFLAGS := $(shell sdl2-config --libs) -lSDL2_image -lSDL2_ttf
 
 CXXFLAGS 	:= -I. -I./include ${SDL_CFLAGS} ${SDL_LDFLAGS}
 
-EXE_NAME	:= Lab0
+EXE_NAME	:= FSM
 
 MSG_START	:= "Build Started"
 MSG_END		:= "Build Complete"
 MSG_CLEAN	:= "Cleaning up"
 
 BUILD_DIR	:= ./bin
-SRC_DIR		:= ./src
+SRC			:= $(wildcard ./src/*.cpp)
+OBJ			:= $(subst ./src/,, $(patsubst %.cpp,%.o, $(SRC)))
 SDL_INCLUDE	:= "${SDL_SDK}/include"
 SDL_LIB		:= "${SDL_SDK}/lib"
 
-SRC			:= ${SRC_DIR}/*
-
 all			:= build
 
-build:
+build: $(objects)
 	@echo ${MSG_START}
 
 	#remove directory if it exits and then create directory
@@ -29,7 +28,7 @@ build:
 	#create bin directory
 	mkdir ${BUILD_DIR}
 
-	${CXX} -o ${EXE_NAME} ${SRC} ${CXXFLAGS}
+	${CXX} -g -o ${EXE_NAME} ${SRC} ${CXXFLAGS}
 	@echo ${MSG_END}
 	./${EXE_NAME}
 

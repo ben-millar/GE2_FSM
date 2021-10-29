@@ -9,6 +9,9 @@ PlayerState* WalkRightState::handleInput(InputEvent t_event)
         case InputID::DOWN:
             return new CrouchWalkRightState();
             break;
+        case InputID::LEFT:
+            return new WalkLeftState();
+            break;
         case InputID::JUMP:
             return new JumpingRightState();
             break;
@@ -35,6 +38,11 @@ PlayerState* WalkRightState::handleInput(InputEvent t_event)
 
 void WalkRightState::update(Player& p)
 {
+    if (InputHandler::getInstance()->isPressed(InputID::RIGHT))
+        p.getPhysicsBody().moveRight(1.0f);
+
+    if (InputHandler::getInstance()->isPressed(InputID::DOWN))
+        p.setPlayerState(new CrouchWalkRightState());
 }
 
 ///////////////////////////////////////////////////////////////

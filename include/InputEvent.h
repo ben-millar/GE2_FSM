@@ -9,6 +9,8 @@ enum class InputID
 	LEFT,
 	RIGHT,
 	JUMP,
+	FALLING,
+	HIT_GROUND,
 	EXIT
 };
 

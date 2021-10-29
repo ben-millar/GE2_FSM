@@ -16,6 +16,7 @@ public:
     ~Player() = default;
 
     AnimatedSprite& getAnimatedSprite() { return m_animatedSprite; }
+    PhysicsBody& getPhysicsBody() { return m_physicsBody; }
 
     void handleInput(InputEvent t_event) override;
 

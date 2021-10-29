@@ -4,6 +4,7 @@
 #include <vector>
 #include "Clock.h"
 #include "PhysicsBody.h"
+#include <iostream>
 
 class AnimatedSprite
 {
@@ -14,6 +15,7 @@ public:
 	void setTexture(SDL_Texture* t_texture) { m_texture = t_texture; }
 	void setFrames(std::vector<SDL_Rect> t_frames);
 	void setFrameDelay(float t_timePerFrame) { m_timePerFrame = t_timePerFrame; }
+	void loop(bool t_shouldLoop) { m_loop = t_shouldLoop; }
 
 	void setPosition(Vector2 t_pos) { m_sprite.x = t_pos.x, m_sprite.y = t_pos.y; }
 
@@ -27,6 +29,8 @@ private:
 	std::vector<SDL_Rect>::iterator m_currentFrame;
 
 	std::vector<SDL_Rect> m_frames;
+
+	bool m_loop{ true };
 
 	Clock m_clock;
 	float m_timePerFrame{ 0.1f };

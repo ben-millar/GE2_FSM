@@ -23,7 +23,7 @@ void Game::run()
     tm->add("CROUCH_WALK", loadTextures("assets/ChikBoy_crouch_walk.png"));
 
     m_player = new Player();
-    m_player->setPlayerState(new IdleLeftState());
+    m_player->setPlayerState(new IdleRightState());
 
     Clock clock;
     Time lag(0U);

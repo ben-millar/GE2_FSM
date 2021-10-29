@@ -9,6 +9,9 @@ PlayerState* WalkLeftState::handleInput(InputEvent t_event)
         case InputID::DOWN:
             return new CrouchWalkLeftState();
             break;
+        case InputID::RIGHT:
+            return new WalkRightState();
+            break;
         default:
             break;
         }
@@ -35,6 +38,11 @@ PlayerState* WalkLeftState::handleInput(InputEvent t_event)
 
 void WalkLeftState::update(Player& p)
 {
+    if (InputHandler::getInstance()->isPressed(InputID::LEFT))
+        p.getPhysicsBody().moveLeft(1.0f);
+
+    if (InputHandler::getInstance()->isPressed(InputID::DOWN))
+        p.setPlayerState(new CrouchWalkLeftState());
 }
 
 ///////////////////////////////////////////////////////////////

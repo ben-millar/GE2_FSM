@@ -54,10 +54,13 @@ void CrouchingRightState::enter(Player& p)
             SDL_Rect{32,96,32,32}
         }
     );
+
+    p.getPhysicsBody().isCrouching(true);
 }
 
 ///////////////////////////////////////////////////////////////
 
 void CrouchingRightState::exit(Player& p)
 {
+    p.getPhysicsBody().isCrouching(false);
 }

@@ -38,6 +38,8 @@ PlayerState* IdleLeftState::handleInput(InputEvent t_event)
 
 void IdleLeftState::update(Player& p)
 {
+    if (InputHandler::getInstance()->isPressed(InputID::LEFT))
+        p.setPlayerState(new WalkLeftState());
 }
 
 ///////////////////////////////////////////////////////////////

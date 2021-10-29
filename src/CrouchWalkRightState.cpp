@@ -6,6 +6,12 @@ PlayerState* CrouchWalkRightState::handleInput(InputEvent t_event)
     {
         switch (t_event.ID)
         {
+        case InputID::LEFT:
+            return new CrouchWalkLeftState();
+            break;
+        case InputID::JUMP:
+            return new JumpingRightState();
+            break;
         default:
             break;
         }
@@ -20,9 +26,6 @@ PlayerState* CrouchWalkRightState::handleInput(InputEvent t_event)
         case InputID::RIGHT:
             return new CrouchingRightState();
             break;
-        case InputID::JUMP:
-            return new JumpingRightState();
-            break;
         default:
             break;
         }
@@ -35,6 +38,8 @@ PlayerState* CrouchWalkRightState::handleInput(InputEvent t_event)
 
 void CrouchWalkRightState::update(Player& p)
 {
+    if (InputHandler::getInstance()->isPressed(InputID::RIGHT))
+        p.getPhysicsBody().moveRight(1.0f);
 }
 
 ///////////////////////////////////////////////////////////////
@@ -57,10 +62,13 @@ void CrouchWalkRightState::enter(Player& p)
             SDL_Rect{32,288,32,32}
         }
     );
+
+    p.getPhysicsBody().isCrouching(true);
 }
 
 ///////////////////////////////////////////////////////////////
 
 void CrouchWalkRightState::exit(Player& p)
 {
+    p.getPhysicsBody().isCrouching(false);
 }

@@ -19,6 +19,7 @@ void AnimatedSprite::setFrames(std::vector<SDL_Rect> t_frames)
 {
 	m_frames = t_frames;
 	m_currentFrame = m_frames.begin();
+	m_clock.start();
 }
 
 ////////////////////////////////////////////////////////////
@@ -28,7 +29,13 @@ void AnimatedSprite::update()
 	if (m_clock.getTimeElapsed().asSeconds() > m_timePerFrame)
 	{
 		if (m_frames.end() == ++m_currentFrame)
-			m_currentFrame = m_frames.begin();
+		{
+			if (m_loop)
+				m_currentFrame = m_frames.begin();
+			else
+				--m_currentFrame;
+		}
+
 		m_clock.restart();
 	}
 }
