@@ -12,6 +12,9 @@ PlayerState* WalkLeftState::handleInput(InputEvent t_event)
         case InputID::RIGHT:
             return new WalkRightState();
             break;
+        case InputID::JUMP:
+            return new JumpingLeftState();
+            break;
         default:
             break;
         }
@@ -22,9 +25,6 @@ PlayerState* WalkLeftState::handleInput(InputEvent t_event)
         {
         case InputID::LEFT:
             return new IdleLeftState();
-            break;
-        case InputID::JUMP:
-            return new JumpingLeftState();
             break;
         default:
             break;

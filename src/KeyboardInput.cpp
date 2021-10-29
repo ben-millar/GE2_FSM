@@ -9,8 +9,8 @@ KeyboardInput::KeyboardInput()
 
 void KeyboardInput::initialiseMap()
 {
-	m_mapping.emplace(SDLK_UP, InputID::UP);
-	m_mapping.emplace(SDLK_w, InputID::UP);
+	m_mapping.emplace(SDLK_UP, InputID::JUMP);
+	m_mapping.emplace(SDLK_w, InputID::JUMP);
 	m_mapping.emplace(SDLK_DOWN, InputID::DOWN);
 	m_mapping.emplace(SDLK_s, InputID::DOWN);
 	m_mapping.emplace(SDLK_LEFT, InputID::LEFT);
