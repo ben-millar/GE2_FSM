@@ -38,10 +38,10 @@ PlayerState* JumpingRightState::handleInput(InputEvent t_event)
 
 ///////////////////////////////////////////////////////////////
 
-void JumpingRightState::update(Player& p)
+void JumpingRightState::update(Player& p, Time t_dT)
 {
     if (InputHandler::getInstance()->isPressed(InputID::RIGHT))
-        p.getPhysicsBody().moveRight(1.0f);
+        p.getPhysicsBody().moveRight(t_dT);
 }
 
 ///////////////////////////////////////////////////////////////

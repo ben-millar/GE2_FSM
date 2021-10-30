@@ -10,7 +10,7 @@ public:
 	WalkLeftState() = default;
 	virtual ~WalkLeftState() = default;
 	virtual PlayerState* handleInput(InputEvent t_event) override;
-	virtual void update(Player&) override;
+	virtual void update(Player&, Time t_dT) override;
 	virtual void enter(Player&) override;
 	virtual void exit(Player&) override;
 };

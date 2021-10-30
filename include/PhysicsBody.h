@@ -21,7 +21,7 @@ public:
 class PhysicsBody
 {
 public:
-	PhysicsBody(float t_maxSpeed = 0.06f, float t_acceleration = 1.0f, float t_deceleration = 5.0f) :
+	PhysicsBody(float t_maxSpeed = 200.0f, float t_acceleration = 1.0f, float t_deceleration = 5.0f) :
 		MAX_SPEED(t_maxSpeed),
 		ACCELERATION(t_acceleration),
 		DECELERATION(t_deceleration),

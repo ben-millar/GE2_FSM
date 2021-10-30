@@ -36,7 +36,7 @@ PlayerState* IdleRightState::handleInput(InputEvent t_event)
 
 ///////////////////////////////////////////////////////////////
 
-void IdleRightState::update(Player& p)
+void IdleRightState::update(Player& p, Time t_dT)
 {
     if (InputHandler::getInstance()->isPressed(InputID::RIGHT))
         p.setPlayerState(new WalkRightState());

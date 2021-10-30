@@ -36,7 +36,7 @@ PlayerState* CrouchingRightState::handleInput(InputEvent t_event)
 
 ///////////////////////////////////////////////////////////////
 
-void CrouchingRightState::update(Player& p)
+void CrouchingRightState::update(Player& p, Time t_dT)
 {
 }
 

@@ -36,10 +36,10 @@ PlayerState* CrouchWalkRightState::handleInput(InputEvent t_event)
 
 ///////////////////////////////////////////////////////////////
 
-void CrouchWalkRightState::update(Player& p)
+void CrouchWalkRightState::update(Player& p, Time t_dT)
 {
     if (InputHandler::getInstance()->isPressed(InputID::RIGHT))
-        p.getPhysicsBody().moveRight(1.0f);
+        p.getPhysicsBody().moveRight(t_dT);
 }
 
 ///////////////////////////////////////////////////////////////

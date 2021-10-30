@@ -1,22 +1,18 @@
-#ifndef WALK_RIGHT_STATE_H
-#define WALK_RIGHT_STATE_H
+#ifndef JUMPING_STATE_H
+#define JUMPING_STATE_H
 
 #include "PlayerState.h"
 
-class WalkRightState :
+class JumpingState :
     public PlayerState
 {
 public:
-	WalkRightState() = default;
-	virtual ~WalkRightState() = default;
+	JumpingState() = default;
+	virtual ~JumpingState() = default;
 	virtual PlayerState* handleInput(InputEvent t_event) override;
 	virtual void update(Player&, Time t_dT) override;
 	virtual void enter(Player&) override;
 	virtual void exit(Player&) override;
 };
-
-#include "IdleRightState.h"
-#include "CrouchWalkRightState.h"
-#include "JumpingRightState.h"
 
 #endif

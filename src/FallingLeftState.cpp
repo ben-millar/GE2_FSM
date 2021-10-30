@@ -38,10 +38,10 @@ PlayerState* FallingLeftState::handleInput(InputEvent t_event)
 
 ///////////////////////////////////////////////////////////////
 
-void FallingLeftState::update(Player& p)
+void FallingLeftState::update(Player& p, Time t_dT)
 {
     if (InputHandler::getInstance()->isPressed(InputID::LEFT))
-        p.getPhysicsBody().moveLeft(1.0f);
+        p.getPhysicsBody().moveLeft(t_dT);
 }
 
 ///////////////////////////////////////////////////////////////

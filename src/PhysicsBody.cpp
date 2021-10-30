@@ -1,5 +1,5 @@
 #include "PhysicsBody.h"
-
+#include <iostream>
 void PhysicsBody::update(Time t_dT)
 {
 	m_position += m_velocity;
@@ -18,7 +18,7 @@ void PhysicsBody::moveLeft(Time t_dT)
 		-MAX_SPEED * 0.4f :
 		-MAX_SPEED;
 
-	m_velocity.x = moveSpeed;
+	m_velocity.x = moveSpeed * t_dT.asSeconds();
 	//float deltaSpeed = ACCELERATION * t_dT.asSeconds();
 	//((m_velocity.x - deltaSpeed) < -MAX_SPEED) ?
 	//	m_velocity.x = -MAX_SPEED :
@@ -35,7 +35,7 @@ void PhysicsBody::moveRight(Time t_dT)
 		MAX_SPEED * 0.4f :
 		MAX_SPEED;
 
-	m_velocity.x = moveSpeed;
+	m_velocity.x = moveSpeed * t_dT.asSeconds();
 	//float deltaSpeed = ACCELERATION * t_dT.asSeconds() * 2.0f;
 	//(m_velocity.x + deltaSpeed > MAX_SPEED) ?
 	//	m_velocity.x = MAX_SPEED :
@@ -46,18 +46,18 @@ void PhysicsBody::moveRight(Time t_dT)
 
 void PhysicsBody::jump()
 {
-	m_velocity.y -= 0.15f;
+	m_velocity.y -= 0.5f;
 }
 
 ///////////////////////////////////////////////////////////////
 
 void PhysicsBody::decelerate(Time t_dT)
 {
-	m_velocity.x -= (MAX_SPEED / 5.0f) * m_velocity.x;
+	m_velocity.x -= (MAX_SPEED / 5.0f) * m_velocity.x * t_dT.asSeconds();
 
-	if (m_position.y < 500.0f)
+	if (m_position.y < 640.0f)
 	{
-		m_velocity.y += 0.00005f;
+		m_velocity.y += 1.0f * t_dT.asSeconds();
 	}
 	else
 	{
