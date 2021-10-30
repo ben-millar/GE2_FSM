@@ -36,7 +36,7 @@ void Player::setPlayerState(PlayerState* t_state)
 		m_state->exit(*this);
 		delete m_state;
 	}
-	
+
 	m_state = t_state;
 	m_state->enter(*this);
 }
