@@ -46,7 +46,7 @@ void PhysicsBody::moveRight(Time t_dT)
 
 void PhysicsBody::jump()
 {
-	m_velocity.y -= 0.5f;
+	m_velocity.y += JUMP_FORCE;
 }
 
 ///////////////////////////////////////////////////////////////
@@ -55,13 +55,14 @@ void PhysicsBody::decelerate(Time t_dT)
 {
 	m_velocity.x -= (MAX_SPEED / 5.0f) * m_velocity.x * t_dT.asSeconds();
 
-	if (m_position.y < 640.0f)
+	if (m_position.y < GROUND_LEVEL)
 	{
-		m_velocity.y += 1.0f * t_dT.asSeconds();
+		m_velocity.y += GRAVITY * t_dT.asSeconds();
 	}
 	else
 	{
 		InputHandler::getInstance()->onNotify(InputEvent(InputID::HIT_GROUND));
+		m_position.y = GROUND_LEVEL;
 		m_velocity.y = 0.0f;
 	}
 

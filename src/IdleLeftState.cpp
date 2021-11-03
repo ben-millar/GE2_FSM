@@ -58,6 +58,9 @@ void IdleLeftState::enter(Player& p)
             SDL_Rect{0,160,32,32}
         }
     );
+
+    if (InputHandler::getInstance()->isPressed(InputID::JUMP))
+        p.setPlayerState(new JumpingLeftState());
 }
 
 ///////////////////////////////////////////////////////////////

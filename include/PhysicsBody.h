@@ -52,6 +52,10 @@ private:
 	const float MAX_SPEED;
 	const float ACCELERATION;
 	const float DECELERATION;
+
+	const float GRAVITY{ 1.2f };
+	const float JUMP_FORCE{ -1.0f };
+	const float GROUND_LEVEL{ 640.0f };
 };
 
 #endif
